@@ -81,8 +81,8 @@ public class Dao {
 	
 	public int update(String name, String newDivision, String newPosition) throws Exception {
 	    String sql = "UPDATE main m JOIN employees ON m.employee = employees.id" 
-	    						+ " SET m.division=\"" + newDivision + "\"" 
-	    						+ ", m.position=\"" + newPosition + "\" WHERE employee_name=\"" + name + "\";";
+	    						+ " SET m.division=" + newDivision
+	    						+ ", m.position=" + newPosition + " WHERE employee_name=\"" + name + "\";";
 	    System.out.println(sql);
 		connect();
 		PreparedStatement statement = connection.prepareStatement(sql);

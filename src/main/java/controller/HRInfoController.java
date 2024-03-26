@@ -64,13 +64,16 @@ public class HRInfoController extends HttpServlet {
 		Dao dao = new Dao();
 		request.setCharacterEncoding("utf-8"); 
 		String action = request.getParameter("action");
-		System.out.println(action);
 		
 		try {
 			if (action.equals("Delete")) {
 				dao.delete(request.getParameter("key"));
 			} else if (action.equals("Update")){
-				dao.update(request.getParameter("key"), "IT部", "副部長");
+				session.setAttribute("name", request.getParameter("key"));
+				System.out.println(request.getAttribute("name"));
+				String view = "/WEB-INF/views/update.jsp";
+		        request.getRequestDispatcher(view).forward(request, response);
+				return;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
